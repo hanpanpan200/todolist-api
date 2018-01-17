@@ -8,10 +8,10 @@ class App {
 
   constructor() {
     this.app = express()
+    this.connectDatabase()
     this.middleware()
     this.routes()
     this.handleError()
-    this.showAvailableRouters()
   }
 
   private connectDatabase(): void {
@@ -36,14 +36,6 @@ class App {
     this.app.use(function(req, res) {
       res.status(404).send({ url: req.originalUrl + ' not found.' })
     })    
-  }
-
-  private showAvailableRouters() {
-    this.app._router.stack.forEach(function(r){
-      if (r.route && r.route.path){
-        console.log(r.route.path)
-      }
-    })
   }
 }
 

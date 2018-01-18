@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import {
   getAllTasks,
+  createTask,
 } from '../controllers/TodoListController'
 
 class TodoListRouter {
@@ -13,6 +14,7 @@ class TodoListRouter {
 
   private init(): void {
     this.router.get('/tasks', getAllTasks)
+    this.router.post('/tasks', createTask)
   }
 }
 
